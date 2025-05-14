@@ -1,13 +1,13 @@
 {
   "name": "site-linktree-bro",
   "version": "1.0.0",
-  "description": "Site Linktree avec Dashboard - Bro Edition",
+  "description": "Site Linktree avec Dashboard sécurisé - Edition Bro",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
-    "express-basic-auth": "^1.2.0"
   },
   "dependencies": {
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "express-basic-auth": "^1.2.0"
   }
 }
