@@ -8,21 +8,21 @@
   {
     "label": "Telegram",
     "url": "https://t.me/jeromeibiza",
-    "emoji": "💬"
-  },
-  {
-   "label": "CASINO NIGHT 150% +100 freespins",
-    "url": "https://record.referaplayer.com/_nds6e0VgykJutv7iXV6HvmNd7ZgqdRLk/1/",
-    "emoji": "🎰"
+    "emoji": "💬" 
   },
   {
     "label": "SAMBA SLOTS 200% de Bonus (non sticky) jusqu'à 5000€ + 50 Tours Gratuits sur Le Bandit !",
     "url": "https://record.discasinoaffiliates.com/_au23hP5uLuZVDQsR8vgoqWNd7ZgqdRLk/1/",
     "emoji": "🎰"
-  },
+  }, 
   {
     "label": "SHINY WILD 2x125% jusqu'à 500€ et jusqu'à 25% de rakeback",
     "url": "https://partners.shinywildpartners.com/text/a8d4239f000081000023000002000002000001000001",
+    "emoji": "🎰"
+  }, 
+  {
+   "label": "CASINO NIGHT 150% +100 freespins",
+    "url": "https://record.referaplayer.com/_nds6e0VgykJutv7iXV6HvmNd7ZgqdRLk/1/",
     "emoji": "🎰"
   }
 ]
