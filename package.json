@@ -1,0 +1,12 @@
+{
+  "name": "site-linktree-bro",
+  "version": "1.0.0",
+  "description": "Site Linktree avec Dashboard - Bro Edition",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}

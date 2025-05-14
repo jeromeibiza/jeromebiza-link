@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Admin Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white p-6">
+  <h2 class="text-2xl font-bold mb-4">🎯 Gestion des Liens</h2>
+  <div id="form-container"></div>
+  <button onclick="saveLinks()" class="mt-4 bg-green-500 px-4 py-2 rounded">💾 Sauvegarder</button>
+
+  <script>
+    let links = [];
+
+    fetch('/api/links')
+      .then(res => res.json())
+      .then(data => {
+        links = data;
+        const container = document.getElementById('form-container');
+        data.forEach((link, index) => {
+          container.innerHTML += `
+            <input class="w-full my-2 text-black p-2" placeholder="Label" value="${link.label}" id="label${index}" />
+            <input class="w-full my-2 text-black p-2" placeholder="URL" value="${link.url}" id="url${index}" />
+            <input class="w-full my-2 text-black p-2" placeholder="Emoji" value="${link.emoji}" id="emoji${index}" />
+            <hr class="my-2"/>
+          `;
+        });
+      });
+
+    function saveLinks() {
+      const newLinks = links.map((_, i) => ({
+        label: document.getElementById(`label${i}`).value,
+        url: document.getElementById(`url${i}`).value,
+        emoji: document.getElementById(`emoji${i}`).value
+      }));
+
+      fetch('/api/update', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(newLinks)
+      }).then(() => alert("✅ Liens mis à jour !"));
+    }
+  </script>
+</body>
+</html>
