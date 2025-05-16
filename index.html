@@ -28,7 +28,59 @@
     }
   </style>
 </head>
-<body class="text-white flex items-center justify-center min-h-screen p-6 relative overflow-hidden">
+<body class="bg-gradient-to-br from-blue-700 via-purple-800 to-black text-white min-h-screen relative overflow-x-hidden">
+  <!-- 🎬 Fond vidéo pour ordi uniquement -->
+  <video autoplay muted loop playsinline 
+    class="hidden md:block fixed top-0 left-0 w-full h-full object-cover z-[-1] pointer-events-none">
+    <source src="vegas-background-noaudio.mp4" type="video/mp4">
+  </video>
+
+  <div class="flex flex-col items-center w-full text-center px-4 py-10">
+    <!-- 📸 Photo -->
+    <img src="profile.png" alt="jeromeibiza"
+      class="w-40 h-40 sm:w-48 sm:h-48 rounded-full border-4 border-white shadow-xl object-cover mb-8" />
+
+    <!-- 👑 Nom -->
+    <h1
+      class="text-6xl sm:text-7xl md:text-8xl font-extrabold text-white mb-6 leading-tight tracking-tight drop-shadow-[0_2px_6px_rgba(0,0,0,0.7)] bg-gradient-to-r from-yellow-300 via-white to-yellow-300 bg-clip-text text-transparent">
+      jeromeibiza 👑
+    </h1>
+
+    <!-- 🎰 Sous-titre -->
+    <p class="text-2xl sm:text-3xl md:text-4xl text-gray-100 mb-10">
+      Casino | Poker
+    </p>
+
+    <!-- 🔗 Liens -->
+    <div id="links" class="w-full max-w-md space-y-6 z-10 mb-32"></div>
+  </div>
+
+  <script>
+    fetch('/api/links')
+      .then(res => res.json())
+      .then(data => {
+        const container = document.getElementById('links');
+
+        data.forEach(link => {
+          const a = document.createElement('a');
+          a.href = link.url;
+          a.target = "_blank";
+          a.className = "block text-xl font-bold px-6 py-4 rounded-2xl transition-all duration-300 shadow-lg hover:scale-105";
+
+          // 🎯 Discord → plus gros, bounce, neon
+          if (link.label.includes("Discord")) {
+            a.className += " text-white text-2xl bg-gradient-to-r from-yellow-400 to-red-500 animate-bounce neon-discord border-4 border-white";
+          } else {
+            a.className += " bg-white text-blue-600 hover:bg-yellow-100";
+          }
+
+          a.innerText = `${link.emoji} ${link.label}`;
+          container.appendChild(a);
+        });
+      });
+  </script>
+</body>
+
 
   <!-- 🎬 Fond vidéo -->
 <video autoplay muted loop playsinline 
@@ -74,5 +126,4 @@
         });
       });
   </script>
-</body>
 </html>
