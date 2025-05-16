@@ -14,7 +14,13 @@
   .animate-blink {
     animation: blink 1s infinite;
   }
+
+  .neon-discord {
+    box-shadow: 0 0 10px #0ff, 0 0 20px #0ff, 0 0 40px #0ff;
+    border: 2px solid #0ff;
+  }
 </style>
+
 </head>
 <body class="bg-gradient-to-br from-blue-600 via-indigo-700 to-purple-800 text-white flex items-center justify-center min-h-screen p-6">
   <div class="flex flex-col items-center justify-center min-h-screen w-full text-center px-4">
@@ -40,11 +46,10 @@
       data.forEach(link => {
         const a = document.createElement('a');
         a.href = link.url;
-        a.innerText = `${link.emoji} ${link.label}`;
-        a.className = "block bg-white text-blue-600 text-xl font-bold px-6 py-4 rounded-2xl hover:scale-105 hover:bg-yellow-100 transition-all duration-300 shadow-lg";
         a.target = "_blank";
+        a.className = "relative block bg-white text-blue-600 text-xl font-bold px-6 py-4 rounded-2xl hover:scale-105 hover:bg-yellow-100 transition-all duration-300 shadow-lg";
 
-        // 🎰 Bounce en cascade avec + de délai
+        // 🎰 Bounce en cascade pour les 3 casinos
         if (
           link.label.includes("SAMBA SLOTS") ||
           link.label.includes("SHINY WILD") ||
@@ -53,14 +58,20 @@
           a.classList.add("animate-bounce");
           a.style.animationDelay = `${delay}s`;
           a.style.animationDuration = "1s";
-          delay += 0.8; // délai plus espacé entre chaque
+          delay += 0.8;
         }
 
-        // 🤑 Clignotement Discord
+        // 🤑 Clignotement + Néon + Badge pour Discord
         if (link.label.includes("Discord")) {
-          a.classList.add("animate-blink");
+          a.classList.add("animate-blink", "neon-discord");
+
+          const badge = document.createElement('span');
+          badge.innerText = "🔥";
+          badge.className = "absolute top-[-10px] right-[-10px] bg-red-500 text-white text-sm px-2 py-1 rounded-full shadow";
+          a.appendChild(badge);
         }
 
+        a.innerText = `${link.emoji} ${link.label}`;
         container.appendChild(a);
       });
     });
