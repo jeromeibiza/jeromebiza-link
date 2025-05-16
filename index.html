@@ -20,30 +20,39 @@
 
     <div id="links" class="w-full max-w-md space-y-6"></div>
   </div>
+<script>
+  fetch('/api/links')
+    .then(res => res.json())
+    .then(data => {
+      const container = document.getElementById('links');
+      let delay = 0;
 
-  <script>
-    fetch('/api/links')
-      .then(res => res.json())
-      .then(data => {
-        const container = document.getElementById('links');
-        data.forEach(link => {
-          const a = document.createElement('a');
-          a.href = link.url;
-          a.innerText = `${link.emoji} ${link.label}`;
-          a.className = "block bg-white text-blue-600 text-xl font-bold px-6 py-4 rounded-2xl hover:scale-105 hover:bg-yellow-100 transition-all duration-300 shadow-lg";
-          a.target = "_blank";
+      data.forEach(link => {
+        const a = document.createElement('a');
+        a.href = link.url;
+        a.innerText = `${link.emoji} ${link.label}`;
+        a.className = "block bg-white text-blue-600 text-xl font-bold px-6 py-4 rounded-2xl hover:scale-105 hover:bg-yellow-100 transition-all duration-300 shadow-lg";
+        a.target = "_blank";
 
-          if (
-            link.label.includes("SAMBA SLOTS") ||
-            link.label.includes("SHINY WILD") ||
-            link.label.includes("CASINO NIGHT")
-          ) {
-            a.classList.add("animate-bounce");
-          }
+        // 👉 Bounce en cascade pour les liens casino
+        if (
+          link.label.includes("SAMBA SLOTS") ||
+          link.label.includes("SHINY WILD") ||
+          link.label.includes("CASINO NIGHT")
+        ) {
+          a.classList.add("animate-bounce");
+          a.style.animationDelay = `${delay}s`;
+          delay += 0.3;
+        }
 
-          container.appendChild(a);
-        });
+        // 👉 Vibration continue pour le lien Discord
+        if (link.label.includes("Discord")) {
+          a.classList.add("animate-pulse");
+        }
+
+        container.appendChild(a);
       });
-  </script>
+    });
+</script>
 </body>
 </html>
