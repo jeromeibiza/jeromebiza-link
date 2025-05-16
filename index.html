@@ -5,6 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>jeromeibiza Links</title>
   <script src="https://cdn.tailwindcss.com"></script>
+<style>
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
+  .animate-blink {
+    animation: blink 1s infinite;
+  }
+</style>
 </head>
 <body class="bg-gradient-to-br from-blue-600 via-indigo-700 to-purple-800 text-white flex items-center justify-center min-h-screen p-6">
   <div class="flex flex-col items-center justify-center min-h-screen w-full text-center px-4">
@@ -34,7 +44,7 @@
         a.className = "block bg-white text-blue-600 text-xl font-bold px-6 py-4 rounded-2xl hover:scale-105 hover:bg-yellow-100 transition-all duration-300 shadow-lg";
         a.target = "_blank";
 
-        // 👉 Bounce en cascade pour les liens casino
+        // 🎰 Bounce en cascade avec + de délai
         if (
           link.label.includes("SAMBA SLOTS") ||
           link.label.includes("SHINY WILD") ||
@@ -42,17 +52,19 @@
         ) {
           a.classList.add("animate-bounce");
           a.style.animationDelay = `${delay}s`;
-          delay += 0.3;
+          a.style.animationDuration = "1s";
+          delay += 0.8; // délai plus espacé entre chaque
         }
 
-        // 👉 Vibration continue pour le lien Discord
+        // 🤑 Clignotement Discord
         if (link.label.includes("Discord")) {
-          a.classList.add("animate-pulse");
+          a.classList.add("animate-blink");
         }
 
         container.appendChild(a);
       });
     });
 </script>
+
 </body>
 </html>
