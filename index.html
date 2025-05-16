@@ -30,9 +30,11 @@
 <body class="text-white flex items-center justify-center min-h-screen p-6 relative overflow-hidden">
 
   <!-- 🎬 Fond vidéo -->
-  <video autoplay muted loop playsinline class="fixed top-0 left-0 w-full h-full object-cover z-[-1]">
-    <source src="vegas-background.mp4.mp4" type="video/mp4">
-  </video>
+<video autoplay muted loop playsinline class="fixed top-0 left-0 w-full h-full object-cover z-[-1] pointer-events-none">
+  <source src="vegas-background-compressed.mp4" type="video/mp4">
+  Ton navigateur ne prend pas en charge les vidéos HTML5.
+</video>
+
 
   <div class="flex flex-col items-center justify-center min-h-screen w-full text-center px-4">
     <img src="profile.png" alt="jeromeibiza" class="w-40 h-40 sm:w-48 sm:h-48 rounded-full border-4 border-white shadow-xl object-cover mb-8" />
